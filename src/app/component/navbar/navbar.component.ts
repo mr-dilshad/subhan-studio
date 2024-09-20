@@ -8,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
-
+  scrollToQuote(): void {
+    const element = document.getElementById('quote-section');
+    console.log("inside quote section");
+    
+    console.log(element);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
 }
