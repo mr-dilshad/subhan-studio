@@ -4,6 +4,10 @@
     background-size: cover;
 }
 
+.btn {
+    padding: 1rem;
+}
+
 .btn-play {
     position: relative;
     display: block;
