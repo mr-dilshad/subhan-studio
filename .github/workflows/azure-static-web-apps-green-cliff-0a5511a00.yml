@@ -20,7 +20,7 @@ jobs:
       - name: Set up Node.js environment
         uses: actions/setup-node@v2
         with:
-          node-version: 'latest'  # Use the version required for your Angular app
+          node-version: 'v20.17.0'  # Use the version required for your Angular app
 
       - name: Install dependencies
         run: npm install
