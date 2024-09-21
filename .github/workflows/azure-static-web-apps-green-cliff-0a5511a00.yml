@@ -1,0 +1,38 @@
+name: Azure Static Web Apps CI/CD
+
+on:
+  push:
+    branches:
+      - main  # Replace with your deployment branch if different
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - main  # Or any other branch
+
+jobs:
+  build_and_deploy_job:
+    runs-on: ubuntu-latest
+    name: Build and Deploy Job
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'  # Use the version required for your Angular app
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Angular app
+        run: npm run build --prod
+
+      - name: Deploy to Azure Static Web App
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_GREEN_CLIFF_0A5511A00 }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }} # GitHub token for authentication
+          action: "upload"
+          app_location: "/"  # Location of your Angular app source code
+          output_location: "dist/subhan-studio/browser"  # Output folder after building the Angular app
