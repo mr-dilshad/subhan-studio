@@ -4,9 +4,7 @@
     background-size: cover;
 }
 
-.btn {
-    padding: 1rem;
-}
+
 
 .btn-play {
     position: relative;
@@ -100,3 +98,7 @@
     opacity: 1;
 }
 
+.padded-text {
+    padding-bottom: 20px;
+    display: block;
+}

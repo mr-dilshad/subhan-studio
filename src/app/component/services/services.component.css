@@ -45,3 +45,14 @@
 .no-underline {
     text-decoration: none;
 }
+
+.icon {
+    margin-right: 10px;
+    font-size: 24px;
+    transition: color 0.3s ease;
+    color: #333; /* Default color */
+}
+
+.icon-container:hover .icon {
+    color: #007bff; /* Color on hover */
+}
