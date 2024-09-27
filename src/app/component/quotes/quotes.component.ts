@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Renderer2 } from '@angular/core';
-import { EmailService } from '../../services/email.service';
 import { FormsModule } from '@angular/forms';
+import { EmailService } from '../../services/email/email.service';
 
 @Component({
   selector: 'app-quotes',

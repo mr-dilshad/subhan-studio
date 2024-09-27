@@ -25,6 +25,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Set environment variables
+        run: |
+          echo "API_URL=${{ secrets.API_URL }}" >> $GITHUB_ENV
+          echo "AZURE_FUNCTION_KEY=${{ secrets.AZURE_FUNCTION_KEY }}" >> $GITHUB_ENV
+
       - name: Build Angular app
         run: npm run build --prod
 
