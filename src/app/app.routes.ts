@@ -7,6 +7,8 @@ import { MainScreenComponent } from './pages/main-screen/main-screen.component';
 import { ProjectComponent } from './pages/project/project.component';
 import { ServicesComponent } from './pages/services/services.component';
 import { QuoteComponent } from './pages/quote/quote.component';
+import { TermsnconditionComponent } from './pages/termsncondition/termsncondition.component';
+import { SupportComponent } from './pages/support/support.component';
 
 export const routes: Routes = [
     { path: '', component: MainScreenComponent },
@@ -16,5 +18,7 @@ export const routes: Routes = [
     { path: 'not-found', component: NotFoundComponent },
     { path: 'projects', component: ProjectComponent },
     { path: 'services', component: ServicesComponent },
-    { path: 'quote', component: QuoteComponent }
+    { path: 'quote', component: QuoteComponent },
+    { path: 'termsandconditions', component: TermsnconditionComponent },
+    { path: 'support', component: SupportComponent }
 ];

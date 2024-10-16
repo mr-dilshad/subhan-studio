@@ -1,0 +1,17 @@
+:root {
+    --primary: #4761FF;
+    --secondary: #555555;
+    --light: #F1F3FA;
+    --dark: #1C2035;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: var(--primary);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    padding: 30px;
+}

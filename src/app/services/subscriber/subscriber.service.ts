@@ -12,7 +12,7 @@ export class SubscriberService {
   apiUrl = environment.apiUrl;
   azureFunctionKey = environment.azureFunctionKey;
 // Azure Function URL
-  private url = `${this.apiUrl}/subscribersave?code=${this.azureFunctionKey}`;
+  private url = `${this.apiUrl}/api/subscribers?code=${this.azureFunctionKey}`;
   constructor(private http: HttpClient) { }
 
    // Method to save subscriber email
@@ -27,6 +27,7 @@ export class SubscriberService {
     };
 
     // Make the POST request
-    return this.http.post(this.url, body, { headers: headers });
+    console.log(this.url);
+    return this.http.post(this.url, body, { headers: headers, responseType: 'text' });
   }
 }
