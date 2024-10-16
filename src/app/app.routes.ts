@@ -9,6 +9,7 @@ import { ServicesComponent } from './pages/services/services.component';
 import { QuoteComponent } from './pages/quote/quote.component';
 import { TermsnconditionComponent } from './pages/termsncondition/termsncondition.component';
 import { SupportComponent } from './pages/support/support.component';
+import { PrivacyComponent } from './pages/privacy/privacy.component';
 
 export const routes: Routes = [
     { path: '', component: MainScreenComponent },
@@ -20,5 +21,6 @@ export const routes: Routes = [
     { path: 'services', component: ServicesComponent },
     { path: 'quote', component: QuoteComponent },
     { path: 'termsandconditions', component: TermsnconditionComponent },
-    { path: 'support', component: SupportComponent }
+    { path: 'support', component: SupportComponent },
+    { path: 'privacypolicy', component: PrivacyComponent }
 ];
