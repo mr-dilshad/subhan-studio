@@ -46,3 +46,4 @@ jobs:
           action: "upload"
           app_location: "/"  # Location of your Angular app source code
           output_location: "dist/subhan-studio/browser"  # Output folder after building the Angular app
+          api_location: "" # Api location set to blank
