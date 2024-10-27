@@ -36,7 +36,7 @@ jobs:
           sed -i 's|process.env.AZURE_FUNCTION_KEY|"$AZURE_FUNCTION_KEY"|g' src/environments/environment.prod.ts
 
       - name: Build Angular app
-        run: npm run build --prod
+        run: npm run build -- --configuration production  # Explicitly set production configuration
 
       - name: Deploy to Azure Static Web App
         uses: Azure/static-web-apps-deploy@v1
