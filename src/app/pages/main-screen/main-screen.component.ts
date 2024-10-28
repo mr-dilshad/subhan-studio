@@ -13,6 +13,9 @@ import { CarouselComponent } from "../../component/carousel/carousel.component";
 import { NavbarComponent } from "../../component/navbar/navbar.component";
 import { TopbarComponent } from "../../component/topbar/topbar.component";
 import { SpinnerComponent } from "../../component/spinner/spinner.component";
+import { CalanderComponent } from "../../component/calander/calander.component";
+
+
 
 @Component({
   selector: 'app-main-screen',
@@ -22,5 +25,5 @@ import { SpinnerComponent } from "../../component/spinner/spinner.component";
   styleUrl: './main-screen.component.css'
 })
 export class MainScreenComponent {
-
+  
 }

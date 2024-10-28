@@ -1,7 +1,7 @@
 <div class="container-fluid bg-white sticky-top">
     <div class="container">
         <nav class="navbar navbar-expand-lg bg-white navbar-light p-lg-0">
-            <a href="index.html" class="navbar-brand d-lg-none">
+            <a routerLink="/" class="navbar-brand d-lg-none">
                 <h1 class="fw-bold m-0">Subhan Studios</h1>
             </a>
             <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse"
@@ -10,16 +10,27 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav">
-                    <a href="" class="nav-item nav-link active">Home</a>
-                    <a href="about-us" class="nav-item nav-link">About</a>
-                    <a href="services" class="nav-item nav-link">Services</a>
-                    <a href="projects" class="nav-item nav-link">Projects</a>
-                    <a href="contact-us" class="nav-item nav-link">Contact</a>
+                    <a routerLink="/" routerLinkActive="active" class="nav-item nav-link"
+                        [routerLinkActiveOptions]="{exact: true}">Home</a>
+                    <a routerLink="/about-us" routerLinkActive="active" class="nav-item nav-link">About</a>
+                    <a routerLink="/services" routerLinkActive="active" class="nav-item nav-link">Services</a>
+                    <a routerLink="/projects" routerLinkActive="active" class="nav-item nav-link">Projects</a>
+                    <a routerLink="/contact-us" routerLinkActive="active" class="nav-item nav-link">Contact</a>
                 </div>
-                <div class="ms-auto d-none d-lg-block">
-                    <button class="btn btn-primary rounded-pill py-2 px-3" (click)="scrollToQuote()">Get A Quote</button>
+                <!-- Flexbox to align these two elements to the right -->
+                <div class="d-flex justify-content-end align-items-center ms-auto">
+                    <!-- Calander Component -->
+                    <div class="me-3">
+                        <app-calander></app-calander>
+                    </div>
+
+                    <!-- Get a Quote Button -->
+                    <div>
+                        <button class="btn btn-primary rounded-pill py-2 px-3" (click)="scrollToQuote()">Get A
+                            Quote</button>
+                    </div>
                 </div>
             </div>
         </nav>
     </div>
-  </div>
+</div>
