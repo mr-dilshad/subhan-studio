@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { TopbarComponent } from "./component/topbar/topbar.component";
 import { NavbarComponent } from "./component/navbar/navbar.component";

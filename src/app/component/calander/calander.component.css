@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+    --primary: #4761FF;
+    --secondary: #555555;
+    --light: #F1F3FA;
+    --dark: #1C2035;
+}
+
+
+  /* Button Styling */
+  .schedule-button {
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 50px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.schedule-button:hover {
+    background-color: #0056b3;
+}
+
+  
