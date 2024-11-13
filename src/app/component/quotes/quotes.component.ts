@@ -29,7 +29,7 @@ export class QuotesComponent {
   constructor(private renderer: Renderer2, private emailService: EmailService) {}
 
   copyCompanyNumber() {
-    const companyNumber = '+91-9891747557'; // The company number to copy
+    const companyNumber = '+91-8999784575'; // The company number to copy
     navigator.clipboard.writeText(companyNumber)
       .then(() => {
         this.numberCopied = true;
