@@ -1,81 +1,97 @@
 <!-- Project Start -->
 <div class="container-xxl pt-5">
-    <div class="container">
-        <div class="text-center text-md-start pb-5 pb-md-0 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-            <p class="fs-5 fw-medium text-primary">Our Projects</p>
-            <h1 class="display-5 mb-5">We've Delivered Exceptional IT Transformation Projects</h1>
-        </div>
-        
-        <!-- Use Bootstrap's grid system -->
-        <div class="row">
-            <!-- Project Item 1 -->
-            <div class="col-lg-3 col-md-6 mb-5">
-                <div class="project-item">
-                    <div class="position-relative">
-                        <img class="img-fluid" src="assets/img/project-1.jpg" alt="">
-                        <div class="project-overlay">
-                            <a class="btn btn-lg-square btn-light rounded-circle m-1" href="assets/img/project-1.jpg" data-lightbox="project"><i class="fa fa-eye"></i></a>
-                            <a class="btn btn-lg-square btn-light rounded-circle m-1" href=""><i class="fa fa-link"></i></a>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <a class="d-block h5" href="">Cloud Migration & Optimization</a>
-                        <span>Seamlessly transitioning businesses to the cloud, enhancing performance, and reducing costs.</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Project Item 2 -->
-            <div class="col-lg-3 col-md-6 mb-5">
-                <div class="project-item">
-                    <div class="position-relative">
-                        <img class="img-fluid" src="assets/img/project-2.jpg" alt="">
-                        <div class="project-overlay">
-                            <a class="btn btn-lg-square btn-light rounded-circle m-1" href="assets/img/project-2.jpg" data-lightbox="project"><i class="fa fa-eye"></i></a>
-                            <a class="btn btn-lg-square btn-light rounded-circle m-1" href=""><i class="fa fa-link"></i></a>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <a class="d-block h5" href="">Cybersecurity Implementation</a>
-                        <span>Strengthening digital defenses to protect businesses from evolving cyber threats.</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project Item 3 -->
-            <div class="col-lg-3 col-md-6 mb-5">
-                <div class="project-item">
-                    <div class="position-relative">
-                        <img class="img-fluid" src="assets/img/project-3.jpg" alt="">
-                        <div class="project-overlay">
-                            <a class="btn btn-lg-square btn-light rounded-circle m-1" href="assets/img/project-3.jpg" data-lightbox="project"><i class="fa fa-eye"></i></a>
-                            <a class="btn btn-lg-square btn-light rounded-circle m-1" href=""><i class="fa fa-link"></i></a>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <a class="d-block h5" href="">Digital Infrastructure Revamp</a>
-                        <span>Modernizing IT systems for improved scalability, agility, and operational efficiency.</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project Item 4 -->
-            <div class="col-lg-3 col-md-6 mb-5">
-                <div class="project-item">
-                    <div class="position-relative">
-                        <img class="img-fluid" src="assets/img/project-4.jpg" alt="">
-                        <div class="project-overlay">
-                            <a class="btn btn-lg-square btn-light rounded-circle m-1" href="assets/img/project-4.jpg" data-lightbox="project"><i class="fa fa-eye"></i></a>
-                            <a class="btn btn-lg-square btn-light rounded-circle m-1" href=""><i class="fa fa-link"></i></a>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <a class="d-block h5" href="">Custom Software Solutions</a>
-                        <span>Developing tailored software to meet the unique needs of businesses, ensuring long-term success.</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="container">
+    <div
+      class="text-center text-md-start pb-5 pb-md-0 wow fadeInUp"
+      data-wow-delay="0.1s"
+      style="max-width: 500px"
+    >
+      <p class="fs-5 fw-medium text-primary">Our Projects</p>
+      <h1 class="display-5 mb-5">
+        We've Delivered Exceptional IT Transformation Projects
+      </h1>
     </div>
+
+    <!-- Use Bootstrap's grid system -->
+    <div class="row">
+      <!-- Project Item 1 -->
+      <div class="col-lg-3 col-md-6 mb-5">
+        <div class="project-item">
+          <div class="position-relative">
+            <img class="img-fluid" src="assets/img/project-1.jpg" alt="" />
+            <div class="project-overlay"></div>
+          </div>
+          <div class="p-4">
+            <a class="d-block h5" (click)="openDailog('cloud-migration')"
+              >Cloud Migration & Optimization</a
+            >
+            <span
+              >Seamlessly transitioning businesses to the cloud, enhancing
+              performance, and reducing costs.</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Item 2 -->
+      <div class="col-lg-3 col-md-6 mb-5">
+        <div class="project-item">
+          <div class="position-relative">
+            <img class="img-fluid" src="assets/img/project-2.jpg" alt="" />
+            <div class="project-overlay"></div>
+          </div>
+          <div class="p-4">
+            <a class="d-block h5" (click)="openDailog('cyber-security')"
+              >Cybersecurity Implementation</a
+            >
+            <span
+              >Strengthening digital defenses to protect businesses from
+              evolving cyber threats.</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Item 3 -->
+      <div class="col-lg-3 col-md-6 mb-5">
+        <div class="project-item">
+          <div class="position-relative">
+            <img class="img-fluid" src="assets/img/project-3.jpg" alt="" />
+            <div class="project-overlay"></div>
+          </div>
+          <div class="p-4">
+            <a class="d-block h5" (click)="openDailog('digital-infrastructure')"
+              >Digital Infrastructure Revamp</a
+            >
+            <span
+              >Modernizing IT systems for improved scalability, agility, and
+              operational efficiency.</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Item 4 -->
+      <div class="col-lg-3 col-md-6 mb-5">
+        <div class="project-item">
+          <div class="position-relative">
+            <img class="img-fluid" src="assets/img/project-4.jpg" alt="" />
+            <div class="project-overlay"></div>
+          </div>
+          <div class="p-4">
+            <a
+              class="d-block h5"
+              (click)="openDailog('custom-software-solutions')"
+              >Custom Software Solutions</a
+            >
+            <span
+              >Developing tailored software to meet the unique needs of
+              businesses, ensuring long-term success.</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <!-- Project End -->
