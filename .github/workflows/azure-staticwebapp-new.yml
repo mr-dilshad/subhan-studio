@@ -2,10 +2,10 @@ name: Deploy web app to Azure Static Web Apps
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
     types: [opened, synchronize, reopened, closed]
-    branches: [ "develop" ]
+    branches: ["develop"]
 
 # Environment variables available to all jobs and steps in this workflow
 env:
@@ -28,27 +28,32 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
-      - name: Checkout code # Checkout the code
+      # Checkout the code
+      - name: Checkout code
         uses: actions/checkout@v4
         with:
           submodules: true
 
-      - name: Set up Node.js # Set up Node.js version 20.11.0
+      # Set up Node.js version 20.11.0
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20.11.0'
+          node-version: "20.11.0"
 
-      - name: Inject Environment Variables # Step to inject environment variables before building the Angular app
+      # Step to inject environment variables before building the Angular app
+      - name: Inject Environment Variables
         run: |
           echo "export const environment = { production: true, apiUrl: '${{ secrets.API_URL }}', azureFunctionKey: '${{ secrets.AZURE_FUNCTION_KEY }}' };" > src/environments/environment.prod.ts
-
-      - name: Install dependencies # Install dependencies
+      # Install dependencies
+      - name: Install dependencies
         run: npm ci
 
-      - name: Build Angular App # Build the Angular app
+      # Build the Angular app
+      - name: Build Angular App
         run: npm run build -- --output-path=${{ env.APP_ARTIFACT_LOCATION }} --base-href=/
 
-      - name: Deploy to Azure Static Web Apps # Deploy to Azure Static Web Apps
+      # Deploy to Azure Static Web Apps
+      - name: Deploy to Azure Static Web Apps
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
@@ -62,7 +67,6 @@ jobs:
           ###### End of Repository/Build Configurations ######
       env:
         PATH: /opt/hostedtoolcache/node/${{ env.NODE_VERSION }}/x64/bin:${{ env.PATH }}
-
 
   close_pull_request_job:
     permissions:
