@@ -2,10 +2,10 @@ name: Deploy web app to Azure Static Web Apps
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
     types: [opened, synchronize, reopened, closed]
-    branches: [ "develop" ]
+    branches: ["develop"]
 
 # Environment variables available to all jobs and steps in this workflow
 env:
@@ -15,7 +15,7 @@ env:
   AZURE_STATIC_WEB_APPS_API_TOKEN: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_GREEN_CLIFF_0A5511A00 }} # secret containing deployment token for your static web app
   AZURE_FUNCTION_KEY: ${{ secrets.AZURE_FUNCTION_KEY }}
   API_URL: ${{ secrets.API_URL }}
-  
+
 permissions:
   contents: read
 
@@ -31,12 +31,20 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: true
-      
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20.11.0"
+
+      - name: Install Dependencies
+        run: npm install
+
       # Step to inject environment variables before building the Angular app
       - name: Inject Environment Variables
         run: |
           echo "export const environment = { production: true, apiUrl: '${{ secrets.API_URL }}', azureFunctionKey: '${{ secrets.AZURE_FUNCTION_KEY }}' };" > src/environments/environment.prod.ts
-      
+
       - id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
