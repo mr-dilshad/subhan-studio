@@ -2,7 +2,7 @@
 
 .video-background-container {
     position: relative;
-    height: 160vh;
+    height: 110vh; /* Changed to 100vh for better scaling across devices */
     overflow: hidden;
     margin: 10px;
   }
@@ -18,6 +18,9 @@
     transform: translate(-50%, -50%);
     z-index: -1;
     object-fit: cover;
+    background-color: #000; /* Fallback color in case video doesn't load */
+
+    aspect-ratio: 4/3;
   }
   
   .video-overlay {
@@ -27,6 +30,7 @@
     width: 100%;
     height: 100%;
     z-index: 1;
+    background: rgba(0, 0, 0, 0.3); /* Adds a semi-transparent overlay for better text visibility */
   }
 
   @media screen and (max-width: 576px) {
