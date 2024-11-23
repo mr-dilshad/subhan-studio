@@ -1,54 +1,84 @@
-/*** Header ***/
-.carousel-caption {
+/*** Static Header with Fixed Height and Aspect Ratio ***/
+.static-header {
+    position: relative;
+    width: 100%;
+    height: 500px; /* Fixed height */
+    overflow: hidden;
+    z-index: 1;
+}
+
+.static-header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Maintains the aspect ratio and covers the area */
+}
+
+.header-caption {
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     display: flex;
     align-items: center;
-    background: rgba(0, 0, 0, .1);
-    z-index: 1;
+    justify-content: center;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.4); /* Dark overlay for better text visibility */
+    z-index: 2;
 }
 
-.carousel-control-prev,
-.carousel-control-next {
-    width: 15%;
+.header-caption p,
+.header-caption h1 {
+    color: #fff;
+    margin: 0;
 }
 
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    width: 3.5rem;
-    height: 3.5rem;
-    border-radius: 3.5rem;
+.header-caption p {
+    font-size: 1.25rem;
+}
+
+.header-caption h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.header-caption .btn {
+    font-size: 1rem;
+    padding: 10px 20px;
+    border-radius: 30px;
+    color: #fff;
     background-color: var(--primary);
-    border: 15px solid var(--primary);
+    text-decoration: none;
 }
 
+/*** Aspect Ratio ***/
+.aspect-ratio-box {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    overflow: hidden;
+}
+
+.aspect-ratio-box img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/*** Responsive Adjustments ***/
 @media (max-width: 768px) {
-    #header-carousel .carousel-item {
-        position: relative;
-        min-height: 450px;
+    .static-header {
+        height: 300px; /* Adjust fixed height for smaller screens */
     }
-    
-    #header-carousel .carousel-item img {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+
+    .header-caption h1 {
+        font-size: 1.75rem;
     }
-}
 
-.page-header {
-    background: linear-gradient(rgba(0, 0, 0, .1), rgba(0, 0, 0, .1)), url(/src/assets/img/carousel-1.jpg) center center no-repeat;
-    background-size: cover;
-}
-
-.page-header .breadcrumb-item+.breadcrumb-item::before {
-    color: var(--light);
-}
-
-.page-header .breadcrumb-item,
-.page-header .breadcrumb-item a {
-    font-size: 18px;
-    color: var(--light);
+    .header-caption p {
+        font-size: 1rem;
+    }
 }
