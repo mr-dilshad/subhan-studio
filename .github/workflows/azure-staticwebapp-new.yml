@@ -7,76 +7,77 @@ on:
     types: [opened, synchronize, reopened, closed]
     branches: ["develop"]
 
-# Environment variables available to all jobs and steps in this workflow
-env:
-  APP_LOCATION: "/" # location of your client code
-  API_LOCATION: "" # location of your API source code - optional
-  APP_ARTIFACT_LOCATION: "dist/subhan-studio/browser" # location of client code build output
-  AZURE_STATIC_WEB_APPS_API_TOKEN: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_GREEN_CLIFF_0A5511A00 }} # secret containing deployment token for your static web app
-  AZURE_FUNCTION_KEY: ${{ secrets.AZURE_FUNCTION_KEY }}
-  API_URL: ${{ secrets.API_URL }}
-  PATH: /opt/hostedtoolcache/node/20.11.0/x64/bin:${{ env.PATH }} # Corrected PATH modification
-
 permissions:
   contents: read
 
 jobs:
   build_and_deploy_job:
-    permissions:
-      contents: read # for actions/checkout to fetch code
-      pull-requests: write # for Azure/static-web-apps-deploy to comment on PRs
-    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
-    runs-on: ubuntu-latest
     name: Build and Deploy Job
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read # For actions/checkout to fetch code
+      pull-requests: write # For Azure/static-web-apps-deploy to comment on PRs
+    env: # Define job-level environment variables
+      NODE_VERSION: "20.11.0"
+      APP_LOCATION: "./" # Location of your Angular client code
+      API_LOCATION: "" # Location of your API source code (optional)
+      APP_ARTIFACT_LOCATION: "dist/subhan-studio/browser" # Build output directory for Angular
+      AZURE_STATIC_WEB_APPS_API_TOKEN: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_GREEN_CLIFF_0A5511A00 }}
+      AZURE_FUNCTION_KEY: ${{ secrets.AZURE_FUNCTION_KEY }}
+      API_URL: ${{ secrets.API_URL }}
+
     steps:
-      # Checkout the code
-      - name: Checkout code
+      # Step 1: Checkout the repository
+      - name: Checkout Code
         uses: actions/checkout@v4
         with:
           submodules: true
 
-      # Set up Node.js version 20.11.0
+      # Step 2: Set up Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "20.11.0"
+          node-version: ${{ env.NODE_VERSION }}
 
-      # Step to inject environment variables before building the Angular app
+      # Step 3: Verify Node.js Version
+      - name: Verify Node.js Version
+        run: node -v
+
+      # Step 4: Inject environment variables into Angular
       - name: Inject Environment Variables
         run: |
-          echo "export const environment = { production: true, apiUrl: '${{ secrets.API_URL }}', azureFunctionKey: '${{ secrets.AZURE_FUNCTION_KEY }}' };" > src/environments/environment.prod.ts
-      # Install dependencies
-      - name: Install dependencies
+          echo "export const environment = { production: true, apiUrl: '${{ env.API_URL }}', azureFunctionKey: '${{ env.AZURE_FUNCTION_KEY }}' };" > src/environments/environment.prod.ts
+
+      # Step 5: Install dependencies
+      - name: Install Dependencies
         run: npm ci
 
-      # Build the Angular app
+      # Step 6: Build the Angular app
       - name: Build Angular App
         run: npm run build -- --output-path=${{ env.APP_ARTIFACT_LOCATION }} --base-href=/
 
-      # Deploy to Azure Static Web Apps
+      # Step 7: Deploy to Azure Static Web Apps
       - name: Deploy to Azure Static Web Apps
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
-          azure_static_web_apps_api_token: ${{ env.AZURE_STATIC_WEB_APPS_API_TOKEN }} # secret containing API token for app
-          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for GitHub integrations (i.e. PR comments)
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_GREEN_CLIFF_0A5511A00 }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for GitHub integrations (i.e., PR comments)
           action: "upload"
-          ###### Repository/Build Configurations ######
           app_location: ${{ env.APP_LOCATION }}
           api_location: ${{ env.API_LOCATION }}
           app_artifact_location: ${{ env.APP_ARTIFACT_LOCATION }}
-          ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
+    name: Close Pull Request Job
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && github.event.action == 'closed'
     permissions:
       contents: none
-    if: github.event_name == 'pull_request' && github.event.action == 'closed'
-    runs-on: ubuntu-latest
-    name: Close Pull Request Job
     steps:
       - name: Close Pull Request
         id: closepullrequest
         uses: Azure/static-web-apps-deploy@v1
         with:
-          azure_static_web_apps_api_token: ${{ env.AZURE_STATIC_WEB_APPS_API_TOKEN }} # secret containing API token for app
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_GREEN_CLIFF_0A5511A00 }}
           action: "close"
