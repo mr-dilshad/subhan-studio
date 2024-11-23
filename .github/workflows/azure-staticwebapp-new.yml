@@ -28,33 +28,27 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
-      # Checkout the code
-      - name: Checkout code
+      - name: Checkout code # Checkout the code
         uses: actions/checkout@v4
         with:
           submodules: true
 
-      # Set up Node.js version 20.11.0
-      - name: Set up Node.js
+      - name: Set up Node.js # Set up Node.js version 20.11.0
         uses: actions/setup-node@v3
         with:
           node-version: '20.11.0'
 
-      # Step to inject environment variables before building the Angular app
-      - name: Inject Environment Variables
+      - name: Inject Environment Variables # Step to inject environment variables before building the Angular app
         run: |
           echo "export const environment = { production: true, apiUrl: '${{ secrets.API_URL }}', azureFunctionKey: '${{ secrets.AZURE_FUNCTION_KEY }}' };" > src/environments/environment.prod.ts
 
-      # Install dependencies
-      - name: Install dependencies
+      - name: Install dependencies # Install dependencies
         run: npm ci
 
-      # Build the Angular app
-      - name: Build Angular App
+      - name: Build Angular App # Build the Angular app
         run: npm run build -- --output-path=${{ env.APP_ARTIFACT_LOCATION }} --base-href=/
 
-      # Deploy to Azure Static Web Apps
-      - name: Deploy to Azure Static Web Apps
+      - name: Deploy to Azure Static Web Apps # Deploy to Azure Static Web Apps
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
