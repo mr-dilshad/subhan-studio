@@ -2,7 +2,7 @@
 
 .video-background-container {
     position: relative;
-    height: 110vh; /* Changed to 100vh for better scaling across devices */
+    height: 130vh; /* Changed to 100vh for better scaling across devices */
     overflow: hidden;
     margin: 10px;
   }

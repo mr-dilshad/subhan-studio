@@ -1,90 +1,198 @@
 <div id="quote-section" class="container-xxl py-5">
-    <div class="container">
-        <div class="row g-5">
-            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                <p class="fs-5 fw-medium text-primary">Get A Quote</p>
-                <h1 class="display-5 mb-4">Need Our Expert Help? We're Here to assist!</h1>
-                <p class="quote-description">Contact us for a personalized quote, and let our expertise guide you to the best solutions tailored for your needs. Your satisfaction is our priority.</p>
-                <button (click)="copyCompanyNumber()" class="d-inline-flex align-items-center rounded overflow-hidden border border-primary" style="padding-left: 0%; padding-top: 0%; padding-bottom: 0%;">
-                    <span class="btn-lg-square bg-primary" style="width: 55px; height: 55px; border-radius: 5px;">
-                        <i class="fa fa-phone-alt text-white"></i>
-                    </span>
-                    <span class="fs-5 fw-medium mx-4">+91-8999784575</span>
-                </button>
-                
-                <p id="message" style="color: green;" *ngIf="numberCopied">Number copied to clipboard</p>                
-            </div>
-            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
-                <h2 class="mb-4">Get A Free Quote</h2>
-            
-                <!-- Success Message -->
-                <div *ngIf="successMessage" class="alert alert-success text-center" role="alert">
-                  {{ successMessage }}
-                </div>
-            
-                <!-- Error Message -->
-                <div *ngIf="errorMessage" class="alert alert-danger text-center" role="alert">
-                  {{ errorMessage }}
-                </div>
-            
-                <form (ngSubmit)="sendEmail()" #quoteForm="ngForm">
-                    <div class="row g-3">
-                        <div class="col-sm-6">
-                            <div class="form-floating">
-                                <input type="text" class="form-control" id="name" placeholder="Your Name" required [(ngModel)]="formData.name" name="name">
-                                <label for="name">Your Name</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-floating">
-                                <input type="email" class="form-control" id="mail" placeholder="Your Email" required [(ngModel)]="formData.email" name="email">
-                                <label for="mail">Your Email</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-floating">
-                                <input type="text" class="form-control" id="mobile" placeholder="Your Mobile" required [(ngModel)]="formData.mobile" name="mobile">
-                                <label for="mobile">Your Mobile</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-floating">
-                                <select class="form-select" id="service" required [(ngModel)]="formData.service" name="service">
-                                    <option selected>Choose a Service</option>
-                                    <option value="digital-transformation">Digital Transformation Consulting</option>
-                                    <option value="cloud-migration">Cloud Migration Services</option>
-                                    <option value="it-infrastructure">IT Infrastructure Management</option>
-                                    <option value="software-development">Software Development</option>
-                                    <option value="cybersecurity">Cybersecurity Solutions</option>
-                                    <option value="data-analytics">Data Analytics & Business Intelligence</option>
-                                    <option value="it-support">IT Support & Maintenance</option>
-                                    <option value="erp-solutions">Enterprise Resource Planning (ERP) Solutions</option>
-                                    <option value="crm-implementation">Customer Relationship Management (CRM) Implementation</option>
-                                    <option value="ai-integration">AI & Machine Learning Integration</option>
-                                    <option value="devops">DevOps & Automation Services</option>
-                                    <option value="process-optimization">Business Process Optimization</option>
-                                    <option value="managed-it">Managed IT Services</option>
-                                    <option value="network-solutions">Network Solutions & Management</option>
-                                    <option value="it-strategy">IT Strategy & Planning</option>
-                                    <option value="others">Others</option>
-                                </select>
-                                <label for="service">Choose A Service</label>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-floating">
-                                <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 130px" required [(ngModel)]="formData.message" name="message"></textarea>
-                                <label for="message">Message</label>
-                            </div>
-                        </div>
-                        <div class="col-12 text-center">
-                            <button class="btn btn-primary w-100 py-3" type="submit">Submit Now</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            
-            
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+        <p class="fs-5 fw-medium text-primary">Get A Quote</p>
+        <h1 class="display-5 mb-4">
+          Need Our Expert Help? We're Here to assist!
+        </h1>
+        <p class="quote-description">
+          Contact us for a personalized quote, and let our expertise guide you
+          to the best solutions tailored for your needs. Your satisfaction is
+          our priority.
+        </p>
+
+        <div class="contact-button">
+          <!-- Call Button -->
+          <a
+            href="tel:+91-899784575"
+            class="d-inline-flex align-items-center rounded overflow-hidden border border-success mt-3"
+            style="
+              padding-left: 0%;
+              padding-top: 0%;
+              padding-bottom: 0%;
+              text-decoration: none;
+            "
+          >
+            <span
+              class="btn-lg-square bg-primary"
+              style="width: 55px; height: 55px; border-radius: 5px"
+            >
+              <i class="fa fa-phone-alt text-white"></i>
+            </span>
+            <span class="fs-5 fw-medium mx-4">Call +91-899784575</span>
+          </a>
+
+          <!-- WhatsApp Button -->
+          <a
+            href="https://wa.me/919891747557?text=Hi,%20I%20would%20like%20to%20get%20a%20quote."
+            target="_blank"
+            class="d-inline-flex align-items-center rounded overflow-hidden border border-success mt-3"
+            style="
+              padding-left: 0%;
+              padding-top: 0%;
+              padding-bottom: 0%;
+              text-decoration: none;
+            "
+          >
+            <span
+              class="btn-lg-square bg-success"
+              style="width: 55px; height: 55px; border-radius: 5px"
+            >
+              <i class="fab fa-whatsapp text-white"></i>
+            </span>
+            <span class="fs-5 fw-medium mx-4">WhatsApp : +91-9891747557</span>
+          </a>
         </div>
+      </div>
+
+      <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+        <h2 class="mb-4">Get A Free Quote</h2>
+
+        <!-- Success Message -->
+        <div
+          *ngIf="successMessage"
+          class="alert alert-success text-center"
+          role="alert"
+        >
+          {{ successMessage }}
+        </div>
+
+        <!-- Error Message -->
+        <div
+          *ngIf="errorMessage"
+          class="alert alert-danger text-center"
+          role="alert"
+        >
+          {{ errorMessage }}
+        </div>
+
+        <form (ngSubmit)="sendEmail()" #quoteForm="ngForm">
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <div class="form-floating">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  placeholder="Your Name"
+                  required
+                  [(ngModel)]="formData.name"
+                  name="name"
+                />
+                <label for="name">Your Name</label>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-floating">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="mail"
+                  placeholder="Your Email"
+                  required
+                  [(ngModel)]="formData.email"
+                  name="email"
+                />
+                <label for="mail">Your Email</label>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-floating">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="mobile"
+                  placeholder="Your Mobile"
+                  required
+                  [(ngModel)]="formData.mobile"
+                  name="mobile"
+                />
+                <label for="mobile">Your Mobile</label>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-floating">
+                <select
+                  class="form-select"
+                  id="service"
+                  required
+                  [(ngModel)]="formData.service"
+                  name="service"
+                >
+                  <option selected>Choose a Service</option>
+                  <option value="digital-transformation">
+                    Digital Transformation Consulting
+                  </option>
+                  <option value="cloud-migration">
+                    Cloud Migration Services
+                  </option>
+                  <option value="it-infrastructure">
+                    IT Infrastructure Management
+                  </option>
+                  <option value="software-development">
+                    Software Development
+                  </option>
+                  <option value="cybersecurity">Cybersecurity Solutions</option>
+                  <option value="data-analytics">
+                    Data Analytics & Business Intelligence
+                  </option>
+                  <option value="it-support">IT Support & Maintenance</option>
+                  <option value="erp-solutions">
+                    Enterprise Resource Planning (ERP) Solutions
+                  </option>
+                  <option value="crm-implementation">
+                    Customer Relationship Management (CRM) Implementation
+                  </option>
+                  <option value="ai-integration">
+                    AI & Machine Learning Integration
+                  </option>
+                  <option value="devops">DevOps & Automation Services</option>
+                  <option value="process-optimization">
+                    Business Process Optimization
+                  </option>
+                  <option value="managed-it">Managed IT Services</option>
+                  <option value="network-solutions">
+                    Network Solutions & Management
+                  </option>
+                  <option value="it-strategy">IT Strategy & Planning</option>
+                  <option value="others">Others</option>
+                </select>
+                <label for="service">Choose A Service</label>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-floating">
+                <textarea
+                  class="form-control"
+                  placeholder="Leave a message here"
+                  id="message"
+                  style="height: 130px"
+                  required
+                  [(ngModel)]="formData.message"
+                  name="message"
+                ></textarea>
+                <label for="message">Message</label>
+              </div>
+            </div>
+            <div class="col-12 text-center">
+              <button class="btn btn-primary w-100 py-3" type="submit">
+                Submit Now
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
+</div>
