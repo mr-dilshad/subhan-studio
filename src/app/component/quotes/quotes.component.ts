@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Renderer2 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { EmailService } from '../../services/email/email.service';
+import { subscribe } from 'diagnostics_channel';
 
 @Component({
   selector: 'app-quotes',
@@ -16,17 +17,17 @@ export class QuotesComponent {
   numberCopied: boolean = false; // Declare numberCopied flag
 
   formData = {
-    name: '',
-    email: '',
-    mobile: '',
-    service: '',
+    from_name: '',
+    from_email: '',
+    from_mobile: '',
+    for_service: '',
     message: ''
   };
 
   successMessage: string = '';
   errorMessage: string = '';
 
-  constructor(private renderer: Renderer2, private emailService: EmailService) {}
+  constructor(private renderer: Renderer2, private emailService: EmailService) { }
 
   copyCompanyNumber() {
     const companyNumber = '+91-8999784575'; // The company number to copy
@@ -42,24 +43,26 @@ export class QuotesComponent {
   }
 
   sendEmail() {
-    this.emailService.sendEmail(this.formData)
-      .then(response => {
-        this.successMessage = 'Your message has been sent successfully!';
-        this.errorMessage = '';
-        this.clearForm();  // Clear form data after success
-      })
-      .catch(error => {
-        this.errorMessage = 'Failed to send your message. Please try again later.';
-        this.successMessage = '';
+    this.emailService.saveUserQuery(this.formData)
+      .subscribe({
+        next: (response: any) => {
+          this.successMessage = 'Your message has been sent successfully!';
+          this.errorMessage = '';
+          this.clearForm();
+        },
+        error: (error : any) => {
+          this.errorMessage = 'Failed to send your message.';
+          this.successMessage = '';
+        }
       });
   }
 
   clearForm() {
     this.formData = {
-      name: '',
-      email: '',
-      mobile: '',
-      service: '',
+      from_name: '',
+      from_email: '',
+      from_mobile: '',
+      for_service: '',
       message: ''
     };
   }
