@@ -1,5 +1,6 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -7,17 +8,27 @@ import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
 })
 export class EmailService {
   
-  constructor() {}
+  constructor(private http: HttpClient) { }
 
-  sendEmail(formData: any): Promise<EmailJSResponseStatus> {
-    const templateParams = {
-      from_name: formData.name,
-      from_email: formData.email,
-      from_mobile: formData.mobile,
-      for_service: formData.service,
+  saveUserQuery(formData: any): Observable<any> {
+
+    //save user query
+    const url = `http://localhost:3000/api/query`;
+      
+    // Construct the body as a JSON object
+    const body = {
+      from_name: formData.from_name,
+      from_email: formData.from_email,
+      from_mobile: formData.from_mobile,
+      for_service: formData.for_service,
       message: formData.message
     };
 
-    return emailjs.send('service_kw9b0up', 'template_jkkv1rh', templateParams, 'ejKKV42sV-54UkwRw');
+    // Construct the header of request
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    
+    return this.http.post(url, body, { headers: headers, responseType: 'text' });
   }
 }
