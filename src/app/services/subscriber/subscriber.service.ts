@@ -54,7 +54,7 @@ export class SubscriberService {
     });
 
     
-    console.log('Subscriber email saved:', email);
+    console.log('Saving subscriber email:', email);
     return this.http.post(url, body, { headers: headers, responseType: 'text' });
   }
 } 
